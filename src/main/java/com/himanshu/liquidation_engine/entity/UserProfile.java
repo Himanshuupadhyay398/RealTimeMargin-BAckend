@@ -1,0 +1,28 @@
+package com.himanshu.liquidation_engine.entity;
+
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
+import java.util.List;
+
+@Data
+@Document(collection = "user_profiles")
+public class UserProfile implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    private String id;
+
+    private Long userId;
+
+    private String email;
+
+    private String profileImage;
+
+    private String bio;
+
+    private List<String> skills;
+}

@@ -1,0 +1,26 @@
+package com.himanshu.liquidation_engine.controller;
+
+import com.himanshu.liquidation_engine.entity.UserProfile;
+import com.himanshu.liquidation_engine.service.UserProfileService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/profiles")
+@RequiredArgsConstructor
+public class UserProfileController {
+
+    private final UserProfileService service;
+
+    @PostMapping
+    public UserProfile createProfile(
+            @RequestBody UserProfile profile) {
+
+        return service.saveProfile(profile);
+    }
+
+    @GetMapping("/user/{userId}")
+    public UserProfile getProfile(@PathVariable Long userId) {
+        return service.getProfileByUserId(userId);
+    }
+}
